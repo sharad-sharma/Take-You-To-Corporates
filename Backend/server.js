@@ -1,10 +1,11 @@
 const express = require('express');
+const profileRoutes = require("./routes/profile-routes");
 
 const app = express();
 
 // set up routes
 // app.use("/auth", authRoutes);
-// app.use("/profile", profileRoutes);
+app.use("/profile", profileRoutes);
 
 // create home route
 app.get('/', (req, res) => {
