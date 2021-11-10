@@ -1,19 +1,22 @@
-const express = require('express');
-const profileRoutes = require("./routes/profile-routes");
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db.js");
+
+dotenv.config();
+
+connectDB();
+
+const postRoute = require("./routes/postRoutes");
+const userRoute = require("./routes/userRoutes");
+const companyRoute = require("./routes/companyRoutes");
 
 const app = express();
 
-// set up routes
-// app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
+app.use(express.json());
+app.use("/post", postRoute);
+app.use("/user", userRoute);
+app.use("/company", companyRoute);
 
-// create home route
-app.get('/', (req, res) => {
-  res.send("Take you to Corporates");
-})
+const PORT = process.env.PORT || 5000;
 
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-  console.log(`app now listening for requests on port ${port}`);
-});
+app.listen(PORT, console.log(`Server running in dev mode on port ${PORT}`));

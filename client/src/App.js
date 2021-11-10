@@ -1,41 +1,95 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Home from './components/screens/Home'
-import Createpost  from './components/screens/Createpost'
-import MyProfile from './components/screens/MyProfile'
-import Signin from './components/screens/Signin'
-import Usersbscribedpost from './components/screens/Usersubscribedpost'
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route, Switch,useHistory} from 'react-router-dom'
-function App() {
-  return (
-    <>
-    {/* imported navbar in each of the component right now we will show it accordingly after authentication */}
-    <BrowserRouter>
-    <Switch>
-      {/* Here we have routed all the components */}
-      
-      <Route exact path="/">
-        <Home/>
-      </Route>
-      <Route  path="/create">
-        <Createpost/>
-      </Route>
-      <Route path="/profile">
-        <MyProfile/>
-      </Route>
-      <Route  path="/signin">
-        <Signin/>
-      </Route>
-      <Route path="/myfollowing">
-        <Usersbscribedpost/>
-      </Route>
+import React, { useState, useEffect } from "react";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
-    </Switch>
-    </BrowserRouter>
-    </>
-  );
-}
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-export default App;
+import { MultiStepForm } from "./component/Post/Create/MultiStepForm";
+import SearchBar from "./component/Search/SearchBar";
+import SearchResult from "./component/Search/SearchResult";
+import InsightsResult from "./component/Search/InsightsResult";
+import HomePage from "./component/Home/HomePage";
+import { PostDisplay } from "./component/Post/Single/PostDisplay";
+import Navbar from "./component/NavBar/Navbar";
+import Navbar2 from "./component/NavBar/Navbar2";
+import AboutUs from "./component/NavBar/AboutUs";
+import Profile from "./component/Profile/Profile";
+import MyPost from "./component/Profile/MyPost";
+
+import Login from "./component/Login/Login";
+
+const Routes = () => {
+  useEffect(() => {
+    const detail = JSON.parse(localStorage.getItem("state"));
+    if (detail) {
+      setState(detail);
+    }
+  }, []);
+
+  const [state, setState] = useState(null);
+
+  let stateSeter = (detail) => {
+    setState(detail);
+  };
+
+  if (!state) {
+    return (
+      <Router>
+        <Navbar2 />
+        <Switch>
+          <Route path="/">
+            <Login stateSeter={stateSeter} />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  } else {
+    if (state?.isProfileComplete) {
+      return (
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/mypost">
+              <MyPost state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/profile">
+              <Profile state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/">
+              <HomePage state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/create">
+              <MultiStepForm state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/company/:id">
+              <SearchResult state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/company/:id/insights">
+              <InsightsResult state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route path="/company">
+              <SearchBar state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/post/:id">
+              <PostDisplay state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/about" component={AboutUs} />
+          </Switch>
+        </Router>
+      );
+    } else {
+      return (
+        <Router>
+          <Navbar2 />
+          <Switch>
+            <Route path="/">
+              <Profile state={state} stateSeter={stateSeter} />
+            </Route>
+          </Switch>
+        </Router>
+      );
+    }
+  }
+};
+
+export default Routes;
