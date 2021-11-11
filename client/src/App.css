@@ -1,18 +1,210 @@
-.mycard{
-  margin-top:30px;
+.App {
+  text-align: center;
 }
-.auth-card{
-  padding:20px;
-  
-  margin: 10px auto;
-  text-align:center;
-  max-width: 400px;
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid rgba(8,93,252) !important;
-  box-shadow: 0 1px 0 0 rgb(8,93,252) i !important;
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-.input-field input[type=password]:focus {
-  border-bottom: 1px solid rgba(8,93,252) !important;
-  box-shadow: 0 1px 0 0 rgb(8,93,252) i !important;
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#card {
+  background: #efe1bd;
+  padding-bottom: 5%;
+}
+
+.card-item {
+  max-width: 50%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.card .card-item .card-item-caption {
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  opacity: 0;
+  background-color: rgba(51, 51, 51, 0.9);
+}
+
+.card .card-item .card-item-caption:hover {
+  opacity: 1;
+}
+
+.card .card-item .card-item-caption .card-item-caption-content {
+  font-size: 1rem;
+}
+
+@media (min-width: 576px) {
+  .card .closeButtonResponsive {
+    display: block;
+  }
+  .card .card-item {
+    margin-bottom: 30px;
+  }
+}
+
+.card-title-settings {
+  margin-top: 5%;
+  font: 12px/18px "opensans-bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: black;
+  text-align: center;
+}
+
+.foto div {
+  background: #ffffff;
+  display: inline-block;
+  /* margin: 0 auto 0 auto; */
+  /* padding: 10px 10px 5px; */
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  z-index: 0;
+  position: relative;
+}
+
+.foto div:after {
+  color: #333;
+  font-size: 25px;
+  content: attr(title);
+  position: relative;
+  top: 15px;
+}
+
+.foto div:hover {
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  transform: scale(1.01);
+  z-index: 10;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+header {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 120px;
+  padding: 50px 0;
+  color: rgb(0, 231, 252);
+  background: #383838;
+  margin-bottom: 30px;
+}
+
+/* Title */
+header h1 {
+  font-weight: 300;
+  font-size: 24px;
+  color: #eee;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 !important;
+  padding-bottom: 25px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+
+#content {
+  margin-top: 90px;
+}
+
+.form-signin {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.form-profile {
+  max-width: 600px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.span-with-margin {
+  margin-right: 5px;
+}
+
+.link-without-underline {
+  text-decoration: none !important;
+}
+
+.post {
+  max-width: 800px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+}
+
+.f6 {
+  font-size: 12px !important;
+}
+
+.text-grey {
+  color: #9199a1 !important;
 }
