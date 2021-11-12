@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const passport = require('passport')
 var cookieParser = require('cookie-parser');
@@ -28,14 +29,27 @@ app.use(passport.session());
 // set up routes
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
+=======
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db.js");
 
-// create home route
-app.get('/', (req, res) => {
-  res.send("Take you to Corporates");
-})
+dotenv.config();
 
-const port = process.env.PORT || 5000;
+connectDB();
 
-app.listen(port, () => {
-  console.log(`app now listening for requests on port ${port}`);
-});
+const postRoute = require("./routes/postRoutes");
+const userRoute = require("./routes/userRoutes");
+const companyRoute = require("./routes/companyRoutes");
+
+const app = express();
+>>>>>>> 0c0aff52c5952dbb393369db6b409a7669602906
+
+app.use(express.json());
+app.use("/post", postRoute);
+app.use("/user", userRoute);
+app.use("/company", companyRoute);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, console.log(`Server running in dev mode on port ${PORT}`));
