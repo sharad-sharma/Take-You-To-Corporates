@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const express = require('express');
 const passport = require('passport')
 var cookieParser = require('cookie-parser');
