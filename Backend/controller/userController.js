@@ -13,6 +13,18 @@ const getPostOfUserById = asyncHandler(async (req, res) => {
   }
 });
 
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).populate("posts");
+  if (user) {
+    res.json({
+      user,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 const getUserByEmail = asyncHandler(async (req, res) => {
   const user = await User.findOne({ primaryEmail: req.params.email });
 
@@ -35,4 +47,5 @@ const getUserByEmail = asyncHandler(async (req, res) => {
 module.exports = {
   getPostOfUserById,
   getUserByEmail,
+  getUserProfile,
 };

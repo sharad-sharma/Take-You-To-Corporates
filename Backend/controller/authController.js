@@ -26,7 +26,7 @@ const authVefify = asyncHandler(async (req, res) => {
     });
     if (ticket) {
       const user = await User.findOne({ primaryEmail: email });
-      console.log(user);
+      //console.log(user);
       if (user) {
         if (containsAll(user)) {
           res.json({
@@ -85,7 +85,7 @@ const addDetails = asyncHandler(async (req, res) => {
 
       if (userNew) {
         res.json({
-          user: user,
+          user: userNew,
           id_token,
         });
       } else {

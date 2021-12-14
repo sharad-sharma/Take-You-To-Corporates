@@ -33,7 +33,7 @@ const protect = asyncHandler(async (req, res, next) => {
         if (user) {
           if (containsAll(user)) {
             req.user = user;
-            console.log(user);
+            //console.log(user);
             return next();
           }
         }

@@ -95,7 +95,7 @@ const deletePostById = asyncHandler(async (req, res) => {
 const getAllPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find({})
     .populate("user", "name")
-    .sort({ updatedAt: -1 });
+    .sort({ createdAt: -1 });
   res.json(posts);
 });
 
