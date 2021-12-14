@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap";
 
 import PostList from "../Post/PostList";
 
-let SearchResult = ({ state }) => {
+let Home = ({ state }) => {
   const [load, setLoad] = useState(0);
   const [posts, setPost] = useState(null);
 
@@ -41,7 +41,7 @@ let SearchResult = ({ state }) => {
   } else if (load === 2) {
     return (
       <>
-        <div className="d-flex m-5">
+        <div className="d-flex justify-content-center m-5">
           <h1>Error in Loading Home Page </h1>
         </div>
       </>
@@ -61,4 +61,4 @@ let SearchResult = ({ state }) => {
   );
 };
 
-export default SearchResult;
+export default Home;

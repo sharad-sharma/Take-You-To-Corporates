@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import _ from "lodash";
 
 import MarkdownRender from ".././../Other/MarkdownRender";
@@ -29,9 +31,12 @@ export const PostBody = ({ post, state }) => {
       <h3>{_.upperFirst(post.title)}</h3>
       {renderTags(post.tags)}
       <span className="span-with-margin text-grey"> • </span>
-      <span className="span-with-margin text-grey">
+      <Link
+        className=" span-with-margin text-grey"
+        to={`/user/${post.user._id}`}
+      >
         {_.upperFirst(post.user.name)}
-      </span>
+      </Link>
       <span className="span-with-margin text-grey"> • </span>
       <span className="span-with-margin text-grey">
         {new Date(post.createdAt).toLocaleString()}

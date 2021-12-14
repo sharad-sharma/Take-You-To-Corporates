@@ -15,7 +15,7 @@ import Navbar2 from "./component/NavBar/Navbar2";
 import AboutUs from "./component/NavBar/AboutUs";
 import Profile from "./component/Profile/Profile";
 import MyPost from "./component/Profile/MyPost";
-
+import User from "./component/Profile/User";
 import Login from "./component/Login/Login";
 
 const Routes = () => {
@@ -37,6 +37,7 @@ const Routes = () => {
       <Router>
         <Navbar2 />
         <Switch>
+        <Route exact path="/about" component={AboutUs} />
           <Route path="/">
             <Login stateSeter={stateSeter} />
           </Route>
@@ -60,6 +61,9 @@ const Routes = () => {
             </Route>
             <Route exact path="/create">
               <MultiStepForm state={state} stateSeter={stateSeter} />
+            </Route>
+            <Route exact path="/user/:id">
+              <User state={state} stateSeter={stateSeter} />
             </Route>
             <Route exact path="/company/:id">
               <SearchResult state={state} stateSeter={stateSeter} />

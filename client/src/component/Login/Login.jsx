@@ -9,12 +9,12 @@ import axios from "axios";
 const Login = ({ stateSeter }) => {
   const loginFail = (response) => {
     console.log("Login Failed");
-    console.log(response);
+    //console.log(response);
   };
 
   const loginSuccess = (response) => {
     console.log("Login Success");
-    console.log(response);
+    //console.log(response);
 
     let email = response.profileObj.email;
     let id_token = response.tokenObj.id_token;
@@ -32,7 +32,7 @@ const Login = ({ stateSeter }) => {
     axios
       .post("/user/auth", backendData, config)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         if (response.data.user) {
           let state = {
             user: response.data.user,
@@ -55,23 +55,40 @@ const Login = ({ stateSeter }) => {
       })
       .catch((error) => {
         console.log(error);
-        alert("Error Verifying Form");
+        alert("Error Verifying Form / Use College Email");
       });
   };
 
   return (
     <Container>
-      <h3 className="display-3">You are Not Logged In</h3>
+      {/* <h3 className="display-3">You are Not Logged In</h3> */}
+      <body class="text-center">
 
-      <GoogleLogin
-        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
-        buttonText="Login With College Mail"
-        onSuccess={loginSuccess}
-        onFailure={loginFail}
-        redirectUri={process.env.REACT_APP_GOOGLE_OAUTH_REDIRECT_URI}
-        hostedDomain={process.env.REACT_APP_GOOGLE_OAUTH_HOSTED_DOMAIN}
-        isSignedIn={true}
-      />
+        <div class="d-flex justify-content-md-center align-items-center vh-100">
+
+
+          <main role="main" class="inner cover">
+
+            <h1 className="display-5">Take You To  Corporates</h1>
+            <br></br>
+            <p class="lead">A complete web solution for students of IET-DAVV to access all on-campus Interview experiences. </p>
+
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+              buttonText={bt}
+              onSuccess={loginSuccess}
+              onFailure={loginFail}
+              redirectUri={process.env.REACT_APP_GOOGLE_OAUTH_REDIRECT_URI}
+              hostedDomain={process.env.REACT_APP_GOOGLE_OAUTH_HOSTED_DOMAIN}
+              isSignedIn={true}
+            />
+          </main>
+
+        </div>
+
+      </body>
+
+
     </Container>
   );
 };

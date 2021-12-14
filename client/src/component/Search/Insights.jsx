@@ -1,4 +1,5 @@
 import React from "react";
+
 import GaugeChart from "react-gauge-chart";
 
 function Insights({ cardsData }) {

@@ -46,8 +46,8 @@ let SearchResult = ({ state }) => {
   } else if (load === 2) {
     return (
       <>
+        <h1 className="my-3">Logged in Using {state.email}</h1>
         <div className="d-flex justify-content-center m-5">
-          <h3 className="my-3">Logged in Using {state.email}</h3>
           <h1>Error in Loading Insights </h1>
         </div>
       </>

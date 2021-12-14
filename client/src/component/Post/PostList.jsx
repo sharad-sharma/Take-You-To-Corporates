@@ -30,7 +30,9 @@ let PostList = ({ posts }) => {
         {renderTags(post.tags)}
         <span className="span-with-margin text-grey"> • </span>
         <span className="span-with-margin text-grey">
-          {_.upperFirst(post.user.name)}
+          <Link className="text-grey" to={`/user/${post.user._id}`}>
+            {_.upperFirst(post.user.name)}
+          </Link>
         </span>
         <span className="span-with-margin text-grey"> • </span>
         <span className="span-with-margin text-grey">

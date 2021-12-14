@@ -16,6 +16,7 @@ function Search({ state }) {
   const [load, setLoad] = useState(0);
 
   const [selectedOption, setSelectedOption] = useState(null);
+
   let getExperinces = () => {
     if (selectedOption) history.push(`/company/${selectedOption.value}`);
   };
